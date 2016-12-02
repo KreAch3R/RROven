@@ -38,25 +38,25 @@ reset=`tput sgr0`
 # Functions
 
 function aaptbuild() {
-	for app in $apps; do
-			name=$(basename $app)
-			#Build package
-			echo ${green}"Running aapt: "${reset}$name.apk
-			$aapt package -v -f -M $app/AndroidManifest.xml -S $app/res/ -I $androidjar -F $app/$name.apk &> /dev/null # NOT hiding output (for now)
-	done
+    for app in $apps; do
+        name=$(basename $app)
+        #Build package
+        echo ${green}"Running aapt: "${reset}$name.apk
+        $aapt package -v -f -M $app/AndroidManifest.xml -S $app/res/ -I $androidjar -F $app/$name.apk &> /dev/null # NOT hiding output (for now)
+    done
 }
 
 function signapk() {
-	for app in $apps; do
-			name=$(basename $app)
-			#Sign package
-			echo ${green}"Sign: "${reset}$name.apk
-			java -jar $currentdir/sign.jar $app/$name.apk --override
-	done
+    for app in $apps; do
+        name=$(basename $app)
+        #Sign package
+        echo ${green}"Sign: "${reset}$name.apk
+        java -jar $currentdir/sign.jar $app/$name.apk --override
+    done
 }
 
 function notify() {
-	echo ${cyan}"Build COMPLETE ${reset}"
+    echo ${cyan}"Build COMPLETE ${reset}"
 }
 
 # Start of the script
