@@ -16,18 +16,18 @@
 
 # Build overlay apks using the terminal
 
-#Variables, EDIT THESE
+# Variables, EDIT THESE
 sdkdir=~/bin/android/sdk
 androidver=25
 toolsver=$androidver.0.0
 
-#DON'T EDIT THESE
+# DON'T EDIT THESE
 aapt=$sdkdir/build-tools/$toolsver/aapt
 androidjar=$sdkdir/platforms/android-$androidver/android.jar
 currentdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-#DON'T EDIT THESE
+# DON'T EDIT THESE
 
-#Color output
+# Color output
 red=`tput setaf 1`
 green=`tput setaf 2`
 orange=`tput setaf 3`
@@ -40,7 +40,7 @@ reset=`tput sgr0`
 function aaptbuild() {
     for app in $apps; do
         name=$(basename $app)
-        #Build package
+        # Build package
         echo ${green}"Running aapt: "${reset}$name.apk
         $aapt package -v -f -M $app/AndroidManifest.xml -S $app/res/ -I $androidjar -F $app/$name.apk &> /dev/null # NOT hiding output (for now)
     done
@@ -49,7 +49,7 @@ function aaptbuild() {
 function signapk() {
     for app in $apps; do
         name=$(basename $app)
-        #Sign package
+        # Sign package
         echo ${green}"Sign: "${reset}$name.apk
         java -jar $currentdir/sign.jar $app/$name.apk --override
     done
