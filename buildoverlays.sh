@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copyright (C) 2017 KreAch3R
+# Copyright (C) 2017-8 KreAch3R
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,8 +18,8 @@
 
 # Variables, EDIT THESE
 sdkdir=~/bin/android/sdk
-androidver=25
-toolsver=$androidver.0.2
+androidver=27
+toolsver=$androidver.0.3
 
 # DON'T EDIT THESE
 aapt=$sdkdir/build-tools/$toolsver/aapt
